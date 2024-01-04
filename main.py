@@ -8,10 +8,10 @@ def run_etl(query, server, port, database, username, password, system_name):
     data = extract_data(query, server, port, database, username, password)
     # transformed_data = transform_data()
     # load_data("mandar data")
-    json_data = [{"SISTEMA": system_name, **row} for row in data]
+    # json_data = [{"SISTEMA": system_name, **row} for row in data]
+    transformed_data = transform_data(system_name, data)
 
-    for item in json_data:
-        print(item)
+    print(transformed_data)
 
 
 if __name__ == "__main__":

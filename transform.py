@@ -1,3 +1,4 @@
-def transform_data():
-    # Transformando la data del ETL
-    print("Transformando data")
+def transform_data(system_name, data):
+    json_data = [{"SISTEMA": system_name, **row} for row in data]
+
+    return json_data
