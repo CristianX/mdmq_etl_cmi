@@ -1,17 +1,27 @@
+import os
+from dotenv import load_dotenv
 import argparse
 from extract import extract_data
 from transform import transform_data
 from load import load_data
 
+load_dotenv()
+
 
 def run_etl(query, server, port, database, username, password, system_name):
-    data = extract_data(query, server, port, database, username, password)
-    # transformed_data = transform_data()
-    # load_data("mandar data")
-    # json_data = [{"SISTEMA": system_name, **row} for row in data]
-    transformed_data = transform_data(system_name, data)
+    mongo_uri = os.environ.get("MONGO_URI")
 
-    print(transformed_data)
+    if not mongo_uri:
+        raise ValueError(
+            "La cadena de conexión MongoDB no está definida en las variables de entorno"
+        )
+
+    data = extract_data(query, server, port, database, username, password)
+
+    if data:
+        transformed_data = transform_data(system_name, data)
+        load_data(transformed_data, mongo_uri)
+        print("Data cargada correctamente")
 
 
 if __name__ == "__main__":
