@@ -8,7 +8,7 @@ from load import load_data
 load_dotenv()
 
 
-def run_etl(query, server, port, database, username, password, system_name):
+def run_etl(query, base ,server, port, database, username, password, system_name):
     mongo_uri = os.environ.get("MONGO_URI")
 
     if not mongo_uri:
@@ -16,7 +16,7 @@ def run_etl(query, server, port, database, username, password, system_name):
             "La cadena de conexión MongoDB no está definida en las variables de entorno"
         )
 
-    data = extract_data(query, server, port, database, username, password)
+    data = extract_data(query, base, server, port, database, username, password)
 
     if data:
         transformed_data = transform_data(system_name, data)
@@ -26,6 +26,9 @@ def run_etl(query, server, port, database, username, password, system_name):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ejecución de proceso ETL para CMI")
+    parser.add_argument(
+        "--base", required=True, help="Base de datos como: MySQL, Postgres, Oracle, MariaDB"
+    )
     parser.add_argument(
         "--server", required=True, help="IP del servidor de Base de Datos"
     )
@@ -53,6 +56,7 @@ if __name__ == "__main__":
 
     run_etl(
         args.query,
+        args.base,
         args.server,
         args.port,
         args.database,
