@@ -16,10 +16,10 @@ RUN pip install -r requirements.txt
 # Descargar el archivo msodbcsql17.tar.gz automáticamente durante la construcción de la imagen
 RUN wget https://packages.microsoft.com/debian/11/prod/pool/main/m/msodbcsql17/msodbcsql17_17.10.5.1-1_amd64.deb -P /tmp/
 
-# Aceptar automáticamente los términos de licencia durante la instalación
-RUN echo "msodbcsql17 msodbcsql17/ACCEPT_EULA boolean true" | debconf-set-selections
+# Establecer la variable de entorno DEBIAN_FRONTEND en "noninteractive" para evitar la interfaz de usuario
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Instalar el controlador ODBC
+# Instalar el controlador ODBC sin necesidad de aceptar manualmente los términos de licencia
 RUN dpkg -i /tmp/msodbcsql17_17.10.5.1-1_amd64.deb
 
 # Copiar el resto de archivos del proyecto
