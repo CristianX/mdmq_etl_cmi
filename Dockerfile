@@ -17,7 +17,7 @@ RUN pip install -r requirements.txt
 RUN wget https://packages.microsoft.com/debian/11/prod/pool/main/m/msodbcsql17/msodbcsql17_17.10.5.1-1_amd64.deb -P /tmp/
 
 # Instalar el controlador ODBC
-RUN dpkg -i /tmp/msodbcsql17_17.9.2.1-1_amd64.deb
+RUN dpkg -i /tmp/msodbcsql17_17.10.5.1-1_amd64.deb
 
 # Copiar el resto de archivos del proyecto
 COPY . .
