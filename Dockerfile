@@ -1,6 +1,6 @@
 FROM python:3.8
 
-RUN apt-get update && apt-get install -y unixodbc unixodbc-dev freetds-dev tdsodbc
+RUN apt-get update && apt-get install -y unixodbc unixodbc-dev odbcinst odbcinst1debian2 libodbc1
 
 WORKDIR /app
 
