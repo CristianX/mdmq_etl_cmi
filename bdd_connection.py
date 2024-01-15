@@ -11,13 +11,13 @@ conn_url = f"mssql+pyodbc://{USERNAME}:{PASSWORD}@{SERVER}/{DATABASE}?driver=ODB
 
 
 # Url de conexión con sqlalchemy para PostgreSQL
-#conn_url = f"postgresql+psycopg2://{USERNAME}:{PASSWORD}@{SERVER}:{PORT}/{DATABASE}"
+# conn_url = f"postgresql+psycopg2://{USERNAME}:{PASSWORD}@{SERVER}:{PORT}/{DATABASE}"
 
 # Url de conexión con sqlalchemy para Oracle
-#conn_url = f"oracle+cx_oracle://{USERNAME}:{PASSWORD}@{SERVER}:{PORT}/?service_name={DATABASE}"
+# conn_url = f"oracle+cx_oracle://{USERNAME}:{PASSWORD}@{SERVER}:{PORT}/?service_name={DATABASE}"
 
 # Url de conexión con sqlalchemy para MariaDB
-#conn_url = f"mysql+mysqldb://{USERNAME}:{PASSWORD}@{SERVER}:{PORT}/{DATABASE}"
+# conn_url = f"mysql+mysqldb://{USERNAME}:{PASSWORD}@{SERVER}:{PORT}/{DATABASE}"
 
 engine = create_engine(conn_url)
 

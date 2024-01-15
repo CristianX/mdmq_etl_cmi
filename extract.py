@@ -22,7 +22,7 @@ def get_connection(base, server, port, database, username, password):
         engine = create_engine(conn_url)
         return engine
     except Exception as e:
-        logging.error(f"Error al establecer la conexión: {e}", exc_info=True)
+        logging.error("Error al establecer la conexión: %s", e, exc_info=True)
         raise
 
 
@@ -36,5 +36,5 @@ def extract_data(query, base, server, port, database, username, password):
             return data
 
     except Exception as e:
-        logging.error(f"Error al extraer datos: {e}", exc_info=True)
+        logging.error("Error al extraer datos: %s", e, exc_info=True)
         raise

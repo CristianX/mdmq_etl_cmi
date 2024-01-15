@@ -28,7 +28,7 @@ def run_etl(query, base, server, port, database, username, password, system_name
             logging.info("Data cargada correctamente")
 
     except Exception as e:
-        logging.error(f"Error en el proceso ETL: {e}", exc_info=True)
+        logging.error("Error en el proceso ETL: %s", e, exc_info=True)
 
 
 if __name__ == "__main__":
